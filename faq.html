@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FAQ Clean Kicks</title>
+
+<style>
+  body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #000;
+    color: #fff;
+  }
+
+  .faq-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 40px 20px;
+  }
+
+  .faq-title {
+    text-align: center;
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 30px;
+  }
+
+  .faq-item {
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+  }
+
+  .faq-question {
+    width: 100%;
+    background: none;
+    border: none;
+    color: #fff;
+    text-align: left;
+    padding: 18px 0;
+    font-size: 16px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .faq-question span {
+    font-size: 20px;
+    transition: transform 0.3s ease;
+  }
+
+  .faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    font-size: 14px;
+    color: #ccc;
+    transition: max-height 0.4s ease, opacity 0.3s ease;
+  }
+
+  .faq-answer p {
+    margin: 0 0 15px 0;
+  }
+
+  .faq-item.active .faq-answer {
+    max-height: 200px;
+    opacity: 1;
+  }
+
+  .faq-item.active .faq-question span {
+    transform: rotate(45deg);
+  }
+
+  @media (max-width: 768px) {
+    .faq-title {
+      font-size: 22px;
+    }
+
+    .faq-question {
+      font-size: 15px;
+    }
+  }
+</style>
+</head>
+
+<body>
+
+<div class="faq-container">
+  <div class="faq-title">Preguntas frecuentes</div>
+
+  <div class="faq-item">
+    <button class="faq-question">
+      ¿Es seguro de usar en todos mis tenis?
+      <span>+</span>
+    </button>
+    <div class="faq-answer">
+      <p>Sí, nuestra fórmula es útil para limpiar cualquier tipo de material, cuidando los colores y texturas originales. No contiene alcohol, cloro ni ningún componente dañino.</p>
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-question">
+      ¿Cuánto rinde el Kit?
+      <span>+</span>
+    </button>
+    <div class="faq-answer">
+      <p>El limpiador de 250ml. rinde para un aproximado de 50 pares (esta cantidad puede variar dependiendo del nivel de suciedad de tus pares, el tamaño, etc.</p>
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-question">
+      ¿Hacen envíos a todo México?
+      <span>+</span>
+    </button>
+    <div class="faq-answer">
+      <p>Sí, enviamos a todo México. Tu pedido llega seguro y bien protegido.</p>
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-question">
+      ¿Cuánto tarda en llegar mi pedido?
+      <span>+</span>
+    </button>
+    <div class="faq-answer">
+      <p>Generalmente entre 2 y 5 días hábiles dependiendo de tu ubicación.</p>
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-question">
+      ¿Qué métodos de pago aceptan?
+      <span>+</span>
+    </button>
+    <div class="faq-answer">
+      <p>Aceptamos pagos seguros con tarjeta, MercadoPago y PayPal.</p>
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-question">
+      ¿Qué pasa si no me funciona?
+      <span>+</span>
+    </button>
+    <div class="faq-answer">
+      <p>Ofrecemos asesoría a través de nuestro WhatsApp por si necesitas ayuda para la limpieza de tus pares. Si el producto no funciona después de seguir las instrucciones de uso te regresamos tu dinero.</p>
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-question">
+      ¿Por qué elegir Clean Kicks Factory?
+      <span>+</span>
+    </button>
+    <div class="faq-answer">
+      <p>Porque está hecho para cuidar tus sneakers de manera integra, fácil y al mejor precio.</p>
+    </div>
+  </div>
+
+</div>
+
+<script>
+  const items = document.querySelectorAll('.faq-item');
+
+  function updateHeight() {
+    const height = document.body.scrollHeight;
+    parent.postMessage({ type: "resize", id: "faq", height: height }, "*"); // ← único cambio
+  }
+
+  items.forEach(item => {
+    const button = item.querySelector('.faq-question');
+
+    button.addEventListener('click', () => {
+      item.classList.toggle('active');
+      setTimeout(updateHeight, 400);
+    });
+  });
+
+  window.addEventListener("load", updateHeight);
+  window.addEventListener("resize", updateHeight);
+</script>
+
+</body>
+</html>

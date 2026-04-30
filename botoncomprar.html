@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body {
+  margin: 0;
+  background: transparent;
+  font-family: Arial, sans-serif;
+}
+
+/* CONTENEDOR STICKY */
+.sticky-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: #000;
+  padding: 12px 16px;
+  box-shadow: 0 -2px 10px rgba(0,0,0,0.3);
+  z-index: 9999;
+}
+
+/* CONTENIDO */
+.sticky-content {
+  max-width: 1000px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+/* TEXTO */
+.sticky-text {
+  color: #fff;
+  font-size: 14px;
+  opacity: 0.9;
+}
+
+/* BOTÓN */
+.sticky-button {
+  background: #fff;
+  color: #000;
+  padding: 12px 18px;
+  border-radius: 10px;
+  font-weight: bold;
+  text-decoration: none;
+  font-size: 14px;
+  white-space: nowrap;
+  transition: 0.3s;
+}
+
+.sticky-button:hover {
+  background: #ddd;
+}
+
+/* SOLO MOBILE */
+@media (min-width: 768px) {
+  .sticky-bar {
+    display: none;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="sticky-bar">
+  <div class="sticky-content">
+    
+    <div class="sticky-text">
+      Tus tenis pueden verse como nuevos 🔥
+    </div>
+
+    <a href="https://www.cleankicksfactory.com/productos/kit-de-limpieza-para-sneakers-copia-1nv2k/" class="sticky-button">
+      Comprar ahora
+    </a>
+
+  </div>
+</div>
+
+</body>
+</html>

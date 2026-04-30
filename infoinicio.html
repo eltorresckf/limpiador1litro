@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+  body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: transparent;
+  }
+
+  .wrap {
+    max-width: 420px; /* ancho similar al bloque derecho */
+    margin: 0 auto;
+    padding: 8px 0 4px 0; /* compacto */
+  }
+
+  .grid {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+  }
+
+  .item {
+    flex: 1;
+    color: white;
+  }
+
+  .icon {
+    font-size: 20px;
+    margin-bottom: 4px;
+    opacity: 0.9;
+  }
+
+  .title {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+  }
+
+  .payments {
+    margin-top: 6px;
+    text-align: center;
+    font-size: 10px;
+    opacity: 0.6;
+  }
+
+  /* SIEMPRE horizontal */
+  @media (max-width: 768px) {
+    .grid {
+      flex-direction: row;
+      gap: 10px;
+    }
+  }
+</style>
+</head>
+
+<body>
+
+<div class="wrap">
+  
+  <div class="grid">
+
+    <div class="item">
+      <div class="icon">🚚</div>
+      <div class="title">ENVÍO GRATIS</div>
+    </div>
+
+    <div class="item">
+      <div class="icon">🛡️</div>
+      <div class="title">GARANTÍA</div>
+    </div>
+
+    <div class="item">
+      <div class="icon">💳</div>
+      <div class="title">PAGO SEGURO</div>
+    </div>
+
+  </div>
+
+  <div class="payments">
+    Tarjetas · MercadoPago · PayPal
+  </div>
+
+</div>
+
+</body>
+</html>

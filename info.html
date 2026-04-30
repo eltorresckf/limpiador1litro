@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #000;
+}
+
+/* CONTENEDOR */
+.section {
+  max-width: 1100px;
+  margin: auto;
+  padding: 10px 5px;
+}
+
+/* GRID 4 COLUMNAS */
+.row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  text-align: center;
+  border-top: 1px solid #222;
+  border-bottom: 1px solid #222;
+}
+
+/* ITEM */
+.item {
+  padding: 12px 5px;
+  position: relative;
+  cursor: pointer;
+}
+
+.item:not(:last-child) {
+  border-right: 1px solid #222;
+}
+
+/* ICONOS */
+.icon svg {
+  width: 22px;
+  height: 22px;
+  stroke: #ccc;
+  stroke-width: 1.8;
+  fill: none;
+  margin-bottom: 5px;
+  transition: 0.3s;
+}
+
+/* TEXTO */
+.title {
+  font-size: 11px;
+  color: #ccc;
+}
+
+/* TOOLTIP DESKTOP */
+.tooltip {
+  position: absolute;
+  left: 50%;
+  top: 100%;
+  transform: translate(-50%, 10px);
+  width: 220px;
+  background: #111;
+  color: #ccc;
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid #333;
+  font-size: 12px;
+  line-height: 1.5;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+
+  opacity: 0;
+  pointer-events: none;
+  transition: 0.25s;
+}
+
+/* HOVER */
+@media (min-width: 769px) {
+  .item:hover svg {
+    stroke: #cd9341;
+    transform: scale(1.1);
+  }
+
+  .item:hover .title {
+    color: #cd9341;
+  }
+
+  .item:hover .tooltip {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+}
+
+/* 🔥 MOBILE (ACORDEÓN) */
+@media (max-width: 768px) {
+
+  .icon svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .title {
+    font-size: 10px;
+  }
+
+  .tooltip {
+    position: static;
+    transform: none;
+    width: 100%;
+    margin-top: 8px;
+    opacity: 0;
+    max-height: 0;
+    overflow: hidden;
+    padding: 0 5px;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+  }
+
+  .item.open .tooltip {
+    opacity: 1;
+    max-height: 200px;
+    padding: 8px 5px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="section">
+  <div class="row">
+
+    <div class="item">
+      <div class="icon">
+        <svg viewBox="0 0 24 24">
+          <rect x="2" y="5" width="20" height="14" rx="2"/>
+          <line x1="2" y1="10" x2="22" y2="10"/>
+        </svg>
+      </div>
+      <div class="title">Formas de pago</div>
+      <div class="tooltip">
+        Aceptamos Visa, MasterCard, AMEX, PayPal, Mercado Pago, OXXO y SPEI.
+      </div>
+    </div>
+
+    <div class="item">
+      <div class="icon">
+        <svg viewBox="0 0 24 24">
+          <rect x="1" y="7" width="15" height="10" rx="2"/>
+          <path d="M16 10h4l2 3v4h-6z"/>
+        </svg>
+      </div>
+      <div class="title">Envíos</div>
+      <div class="tooltip">
+        Envíos a todo México en 2 a 5 días hábiles.
+      </div>
+    </div>
+
+    <div class="item">
+      <div class="icon">
+        <svg viewBox="0 0 24 24">
+          <path d="M3 12a9 9 0 1 0 3-6"/>
+        </svg>
+      </div>
+      <div class="title">Garantía</div>
+      <div class="tooltip">
+        Garantía total: si no te convence, te devolvemos tu dinero.
+      </div>
+    </div>
+
+    <div class="item">
+      <div class="icon">
+        <svg viewBox="0 0 24 24">
+          <rect x="3" y="11" width="18" height="10" rx="2"/>
+        </svg>
+      </div>
+      <div class="title">Pago seguro</div>
+      <div class="tooltip">
+        Compra protegida con cifrado SSL y plataformas seguras.
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+document.querySelectorAll('.item').forEach(item => {
+  item.addEventListener('click', () => {
+    if (window.innerWidth <= 768) {
+      document.querySelectorAll('.item').forEach(i => {
+        if (i !== item) i.classList.remove('open');
+      });
+      item.classList.toggle('open');
+    }
+  });
+});
+</script>
+
+</body>
+</html>

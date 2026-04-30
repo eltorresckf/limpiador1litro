@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Video Carousel CKF</title>
+
+<style>
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #000;
+  color: #fff;
+}
+
+.section {
+  padding: 20px 15px;
+}
+
+.title {
+  font-size: 19px;
+  font-weight: bold;
+  margin-bottom: 6px;
+}
+
+.subtitle {
+  font-size: 14px;
+  color: #aaa;
+  margin-bottom: 16px;
+}
+
+.carousel {
+  display: flex;
+  gap: 14px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+}
+
+.carousel::-webkit-scrollbar {
+  display: none;
+}
+
+.video-card {
+  min-width: 210px; /* antes 160px */
+  height: 360px;   /* antes 280px */
+  border-radius: 16px;
+  overflow: hidden;
+  position: relative;
+  scroll-snap-align: start;
+  background: #111;
+}
+
+video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.label {
+  position: absolute;
+  bottom: 12px;
+  left: 12px;
+  right: 12px;
+  font-size: 13px;
+  background: rgba(0,0,0,0.65);
+  padding: 7px 10px;
+  border-radius: 10px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="section">
+  <div class="title">Mira cómo funciona 👇</div>
+  <div class="subtitle">Resultados reales en segundos</div>
+
+  <div class="carousel">
+
+    <div class="video-card">
+      <video autoplay muted loop playsinline>
+        <source src="VIDEO1.mp4" type="video/mp4">
+      </video>
+      <div class="label">Aplica la espuma</div>
+    </div>
+
+    <div class="video-card">
+      <video autoplay muted loop playsinline>
+        <source src="VIDEO2.mp4" type="video/mp4">
+      </video>
+      <div class="label">Cepilla suavemente</div>
+    </div>
+
+    <div class="video-card">
+      <video autoplay muted loop playsinline>
+        <source src="VIDEO3.mp4" type="video/mp4">
+      </video>
+      <div class="label">Retira la suciedad</div>
+    </div>
+
+    <div class="video-card">
+      <video autoplay muted loop playsinline>
+        <source src="VIDEO4.mp4" type="video/mp4">
+      </video>
+      <div class="label">Resultado final 🔥</div>
+    </div>
+
+  </div>
+</div>
+
+</body>
+</html>

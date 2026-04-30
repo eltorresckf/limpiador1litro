@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+html, body {
+  margin: 0;
+  padding: 0;
+  background: transparent;
+  font-family: Arial, sans-serif;
+}
+
+.ckf-wrapper {
+  width: 100%;
+  padding: 0 16px;
+  box-sizing: border-box;
+}
+
+.ckf-container {
+  width: 100%;
+}
+
+@media (min-width: 1024px) {
+  .ckf-container {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+}
+
+.card {
+  background: #181818;
+  border-radius: 16px;
+  padding: 20px;
+  border: 1px solid rgba(255,255,255,0.06);
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  padding: 14px 0;
+  font-size: 14px;
+  color: #f5f5f5;
+}
+
+.item:not(:last-child) {
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+.icon {
+  margin-right: 14px;
+}
+</style>
+</head>
+
+<body>
+<div class="ckf-wrapper">
+  <div class="ckf-container">
+    <div class="card">
+      <div class="item">🧼 Resultados visibles desde la primera limpieza</div>
+      <div class="item">👟 Ideal para todo tipo de sneakers</div>
+      <div class="item">🚚 Envíos a todo México</div>
+      <div class="item">🔒 Compra 100% segura</div>
+    </div>
+  </div>
+</div>
+
+<script>
+function sendHeight() {
+  const height = document.querySelector('.ckf-wrapper').scrollHeight;
+
+  window.parent.postMessage({
+    type: "resize",
+    id: "index",
+    height: height
+  }, "*");
+}
+
+window.addEventListener("load", sendHeight);
+
+const observer = new ResizeObserver(sendHeight);
+observer.observe(document.body);
+</script>
+
+</body>
+</html>

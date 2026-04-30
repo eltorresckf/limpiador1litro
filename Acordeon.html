@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+  body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #000;
+    color: #fff;
+  }
+
+  .container {
+    max-width: 900px;
+    margin: auto;
+    padding: 10px 20px;
+  }
+
+  .item {
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    cursor: pointer;
+  }
+
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 0;
+  }
+
+  .left {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .icon {
+    width: 22px;
+    height: 22px;
+    opacity: 0.85;
+    transition: all 0.3s ease;
+  }
+
+  .item:hover .icon {
+    transform: scale(1.05);
+    opacity: 1;
+  }
+
+  .title {
+    font-size: 17px;
+    font-weight: 600;
+  }
+
+  .arrow {
+    transition: transform 0.35s ease;
+    opacity: 0.6;
+  }
+
+  .item.active .arrow {
+    transform: rotate(180deg);
+    opacity: 1;
+  }
+
+  .content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .content-inner {
+    padding-bottom: 18px;
+    font-size: 14.5px;
+    line-height: 1.7;
+    opacity: 0.75;
+  }
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+  <!-- QUE INCLUYE -->
+  <div class="item">
+    <div class="header">
+      <div class="left">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5">
+          <path d="M3 7l9-4 9 4-9 4-9-4z"/>
+          <path d="M3 7v10l9 4 9-4V7"/>
+        </svg>
+        <div class="title">¿Qué incluye?</div>
+      </div>
+      <div class="arrow">⌄</div>
+    </div>
+    <div class="content">
+      <div class="content-inner">
+        ✔ Limpiador premium de 250ml.(Limpia hasta 50 pares)<br>
+        ✔ Cepillo multipropósito (Base de madera y cerdas de nylon)<br>
+        ✔ Toalla de microfibra (Súper absorbente)<br>
+      </div>
+    </div>
+  </div>
+
+  <!-- PAGOS -->
+  <div class="item">
+    <div class="header">
+      <div class="left">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5">
+          <rect x="2" y="5" width="20" height="14" rx="2"/>
+          <path d="M2 10h20"/>
+        </svg>
+        <div class="title">Métodos de pago</div>
+      </div>
+      <div class="arrow">⌄</div>
+    </div>
+    <div class="content">
+      <div class="content-inner">
+        Contamos con pagos seguros a través de Mercadopago o Paypal<br>
+        Paga con tarjeta de crédito, débito o efectivo en Oxxo.
+      </div>
+    </div>
+  </div>
+
+  <!-- ENVIOS -->
+  <div class="item">
+    <div class="header">
+      <div class="left">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5">
+          <rect x="1" y="3" width="15" height="13"/>
+          <path d="M16 8h4l3 3v5h-7z"/>
+          <circle cx="5.5" cy="18.5" r="1.5"/>
+          <circle cx="18.5" cy="18.5" r="1.5"/>
+        </svg>
+        <div class="title">Envíos y devoluciones</div>
+      </div>
+      <div class="arrow">⌄</div>
+    </div>
+    <div class="content">
+      <div class="content-inner">
+        Envíos seguros a todo México en 2–5 días hábiles.<br>
+        Tu paquete está seguro hasta la puerta de tu domicilio.
+      </div>
+    </div>
+  </div>
+
+  <!-- GARANTIA -->
+  <div class="item">
+    <div class="header">
+      <div class="left">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5">
+          <path d="M12 3l3 6 6 .9-4.5 4.4 1 6.2L12 17l-5.5 3.5 1-6.2L3 9.9l6-.9z"/>
+        </svg>
+        <div class="title">Garantía</div>
+      </div>
+      <div class="arrow">⌄</div>
+    </div>
+    <div class="content">
+      <div class="content-inner">
+        En Clean Kicks Factory creemos firmemente en la calidad y efectividad de nuestros productos, por ello te ofrecemos nuestra Garantía de Resultados Visibles:
+
+Si después de usar nuestros productos no notas una mejoría clara en la limpieza de tus sneakers, te enviamos otro producto o te devolvemos íntegramente tu dinero.<br>
+        Compra sin riesgo.
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+  const items = document.querySelectorAll(".item");
+
+  function updateHeight() {
+    const height = document.body.scrollHeight;
+    window.parent.postMessage({ type: "resize", id: "incluido", height: height }, "*");
+  }
+
+  items.forEach(item => {
+    item.addEventListener("click", () => {
+      const content = item.querySelector(".content");
+
+      if (item.classList.contains("active")) {
+        content.style.maxHeight = null;
+        item.classList.remove("active");
+      } else {
+        item.classList.add("active");
+        content.style.maxHeight = content.scrollHeight + "px";
+      }
+
+      setTimeout(updateHeight, 600);
+    });
+  });
+
+  window.addEventListener("load", updateHeight);
+</script>
+</body>
+</html>
